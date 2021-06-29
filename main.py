@@ -12,10 +12,14 @@ from functools import wraps
 import smtplib
 from dotenv import dotenv_values
 
-config = dotenv_values(".env")
+#config = dotenv_values(".env")
 
-email_password = config['email_password']
-email_sender = config['email_sender']
+#email_password = config['email_password']
+#email_sender = config['email_sender']
+from boto.s3.connection import S3Connection
+import os
+
+s3 = S3Connection(os.environ['S3_KEY'], os.environ['S3_SECRET'])
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
